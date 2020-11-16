@@ -190,11 +190,77 @@ https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commu
    16  docker version
    17  history
 
+=================================================================================
+Vms Lifecycle
+==================================================================================
+create -> start -> stop -> start -> restart -> Pause -> Unpause -> Kill -> remove
 
 
+=================================================================================
+Container Lifecycle
+==================================================================================
+create -> start -> stop -> start -> restart -> Pause -> Unpause -> Kill -> remove
 
 
+Jenkins
+	server-client(Node)
+	8080 	5000
+	JAVA
+		
+ 19  docker images
+   20  docker ps
+   21  docker ps -a
+   22  docker images
+   23  docker pull jenkins
+   24  docker images'clear
+   25  clear
+   26  docker images
+   27  docker create jenkins
+   28  docker ps
+   29  docker ps -a
+   30  docker start 54dc285b2b62
+   31  docker ps -a
+   32  docker ps
+   33  clear
+   34  docker stop 54dc285b2b62
+   35  docker ps
+   36  docker ps -a
+   37  docker start 54dc285b2b62
+   38  docker ps -a
+   39  docker ps -a
+   40  docker restart 54dc285b2b62
+   41  docker ps -a
+   42  docker ps -a
+   43  clear
+   44  docker pause 54dc285b2b62
+   45  docker ps -a
+   46  docker unpause 54dc285b2b62
+   47  docker ps -a
+   48  docker kill 54dc285b2b62
+   49  docker ps -a
+   50  docker rm 54dc285b2b62
+   51  docker ps -a
+   52  clear
+   53  docker create jenkins
+   54  docker create jenkins
+   55  docker create jenkins
+   56  docker ps -a
+   57  docker start c43cca52198c 8f86fa9201f4
+   58  docker ps -a
+   59  docker stop c43cca52198c
+   60  docker ps -a
+   61  docker restart c43cca52198c 8f86fa9201f4
+   62  docker ps -a
+   63  docker kill c43cca52198c
+   64  docker ps -a
+   65  docker rm c43cca52198c 8f86fa9201f4 d2a7cc484e37
+   66  docker ps -a
+   67  docker stop 8f86fa9201f4
+   68  docker rm 8f86fa9201f4
+   69  history
 
 
-
-
+Assignment
+======================
+Stop VS Kill
+Pause VS Unpause
