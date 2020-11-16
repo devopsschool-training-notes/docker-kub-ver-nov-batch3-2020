@@ -264,3 +264,176 @@ Assignment
 ======================
 Stop VS Kill
 Pause VS Unpause
+
+===========================================
+What is Container? Lets Proov it...
+
+
+ 69  history
+   70  clear
+   71  ps -eaf | grep docker
+   72  docker ps -a
+   73  docker create jenkins
+   74  docker ps -a
+   75  docker start 3d1beaa98b4a
+   76  clear
+   77  ls
+   78  ps -eaf | grep docker
+   79  clear
+   80  ps
+   81  ps -eaf | grep 8621
+   82  ps -eaf | grep 8619
+   83  ps -eaf | grep 8596
+   84  ps -eaf | grep 8595
+   85  ps -eaf | grep 8589
+   86  ps -eaf | grep 1204
+   87  ps -eaf
+   88  clear
+   89  ps -eaf | grep docker
+   90  ps -eaf | grep 19411
+   91  ps -eaf | grep 8968
+   92  clear
+   93  docker ps
+   94  docker ps -a
+   95  docker create jenkins
+   96  docker start 4e47da20bda0fac0666321e10452b0da38c4c3b3305e44a9c3ca9e091c4fdc9c
+   97  clear
+   98  docker ps
+   99  docker exec 4e47da20bda0 df -kh
+  100  df -kh
+  101  docker exec 3d1beaa98b4a df -kh
+  102  docker exec 4e47da20bda0 df -kh
+  103  cd /var/lib/docker/overlay2/f22461ddcaa8926c948a606c4b9806e47c7ba5bc5a7d984a0bd193ab037dd1c4/merged
+  104  ls
+  105  clear
+  106  docker ps
+  107  docker exec 4e47da20bda0 ls /
+  108  docker exec 3d1beaa98b4a ls /
+  109  docker exec 4e47da20bda0 ls /tmp
+  110  docker exec 3d1beaa98b4a ls /tmp
+  111  docker exec 3d1beaa98b4a touch /tmp/raju.txt
+  112  docker exec 3d1beaa98b4a ls /tmp
+  113  docker exec 4e47da20bda0 ls /tmp
+  114  df -kh
+  115  clear
+  116  ps -eaf
+  117  clear
+  118  docker ps
+  119  docker exec 4e47da20bda0 ps -eaf
+  120  docker exec 3d1beaa98b4a ps -eaf
+  121  docker ps
+  122  clear
+  123  docker ps
+  124  docker inspect 4e47da20bda0
+  125  clear
+  126  docker inspect 4e47da20bda0 | grep -i ip
+  127  docker ps
+  128  docker inspect 3d1beaa98b4a | grep -i ip
+  129  ping 172.17.0.2
+  130  hisotyr
+
+===================================================================================
+IMPORATNCE OF PID 1
+
+===================================================================================
+PHYSICAL Server			VIRTUAL Server			Container is 
+is running			is running			is running
+Coz of 				Coz of				Coz of
+PID 1 is running		PID 1 is running		PID 1 is running
+
+PID 1 is SYSTEMD		PID 1 is SYSTEMD		PID 1 can be ANYTHING
+								java
+								perl
+								python
+								abc
+								a
+								x
+								y
+								bin/bash
+								any executable
+
+ 132  clear
+  133  ps -eaf
+  134  clear
+  135  cd
+  136  docker ps
+  137  docker exec 4e47da20bda0 ps -eaf
+  138  docker exec 4e47da20bda0 kill 1
+  139  docker ps
+  140  ps -eaf
+  141  clear
+  142  docker ps
+  143  clear
+  144  docker create ubuntu
+  145  docker ps
+  146  docker ps -a
+  147  docker start 7c34839f8188
+  148  docker ps -a
+  149  clear
+  150  docker ps -a
+  151  docker start 4e47da20bda0
+  152  docker ps -a
+  153  docker start 7c34839f8188+
+  154  docker start 7c34839f8188
+  155  docker ps -a
+  156  docker start 7c34839f8188 ls
+
+RUN
+=========================
+pull -> create --> start -> ATTACHED TO COntainer - BECOME a Container - Become PID1
+
+RUN -d 
+=========================
+pull -> create --> start -> DO NOT ATTACHED TO COntainer - DO NOT BECOME a Container - DO NOT Become PID1
+
+
+
+How to use it?
+=====================
+======
+GO INSIDE - SHELL
+exec
+	it would execute any executable
+	using -it and /bin/bash --- You can go inside a container.
+
+   46  docker run -d jenkins
+   47  docker ps
+   48  docker exec 41bda4a6cac7 ls
+   49  docker exec 41bda4a6cac7 df -kh
+   50  clear
+   51  docker exec 41bda4a6cac7 dffsffds
+   52  docker ps
+   53  docker exec -it 41bda4a6cac7 /bin/bash
+
+
+attach 
+	ATTACHED TO COntainer - BECOME a Container - Become PID1
+
+   57  docker ps
+   58  docker attach 41bda4a6cac7
+   59  docker ps
+
+How to come out of the container SAFTLY????
+CONTR + P + Q
+
+ACCESS FROM OUTSIDE - NETWORK
+
+5  docker ps -a
+   76  docker start 41bda4a6cac7
+   77  docker ps
+   78  docker inspect 41bda4a6cac7 | grep -i ip
+   79  curl http://172.17.0.2:8080
+   80  history
+
+
+
+
+
+
+
+
+
+
+
+
+
