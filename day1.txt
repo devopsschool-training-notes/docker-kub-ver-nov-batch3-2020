@@ -1,0 +1,200 @@
+- Intro
+- team intro
+- quiz - PRE TEST & Post Test
+-----------------------------------
+Start time - 9:30 AM
+End time - 6:30 PM
+========================
+Lunch - 1 PM - 2 PM.
+2 BREAK - 11:AM && 4PM
+=======================
+Lab = 
+	Felix & Ali = Citrix
+	Shiva = VMs - 8106270903
+======================================
+Docker Essential Quiz - 1
+https://www.devopsschool.com/lms/mod/quiz/view.php?id=250	15 mins
+
+Kubernetes Essential Quiz - 1
+https://www.devopsschool.com/lms/mod/quiz/view.php?id=319	15 mins
+=================================================================
+What is Docker?
+=====================
+	Container mgmt tools/platform
+	Written in Golang
+	By Soloman Hykes
+	Release
+		CE - Communit Edition - PART of the training	- FREE
+		EE - Ent Edi
+		https://www.devopsschool.com/blog/what-is-docker-enterprise-3-0-detailed-exaplanations/
+		https://www.devopsschool.com/blog/difference-between-docker-community-edition-ce-vs-docker-enterprise-edition-ee-in-2020/
+	Version - 19.X
+
+	tools
+	- Saving a cost
+	- Saving a time
+	- improving a quality	
+	-----------------------
+	For RUNNING APPS/Software
+		for Data Center
+
+	How?
+	If you run APPS/Software in Container
+
+	What is Container?
+	---------------------------
+	is a process of init a USER NS
+				with their own
+						MNT NS
+						PID NS
+						NET NS
+	is a lightweight complete independent RUN time env for APPS.
+
+What are the components needed to run any Apps/Software?
+What are pre req for Apps/Software to run?
+===============================================
+Hardware
+	--> Kernel
+	
+
+Kernal
+	The kernel is a computer program.	
+	TYPE			--------------------------KERNAL--------------------------
+		- Namespace		NEEDED		OS ALLOWED		CAN BE
+			USER NS		ONE		MANY			MANY
+			MNT NS		ONE		ONE			MANY
+			NET NS		ONE		ONE			MANY
+			PID NS		ONE		ONE			MANY
+		- Capabilities	- For user ROOT or Non Root
+		- Cgroups - CPU + RAM for PID
+		
+
+PC === Personal Computing
+=========================================
+
+Evolution of Computing
+===============================================================================
+1990s				2000						Now
+------------------------------------------------------------------------------------
+		How we are running apps?
+-----------------------------------------------------------------------------------
+			INTERNET (Apps running in data center)
+
+PHYSICAL Servers		VirtualMachine					Containers
+	
+==========================================================================================
+Docker Architecture?
+=====================================
+
+Human => Docker Client => Docker Server(Deamon) ==> ContainerD --> Kernal
+        ========================================
+		   Docker Engine
+
+Other tools
+=====================
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+Docker Coponents
+===============================
+1. Docker Engine
+
+2. Docker Image
+----------------- 
+	Collection of file system(s) which includes following...
+		ROOT FILE SYSTEM + USER FILE SYSTEM 
+		ROOT FILE SYSTEM + USER FILE SYSTEM + APP FILE SYSTEM
+	One COpy of image get Mounted with each Container.
+	You can create - Many container from one Image
+	=== Image is your Apps =====
+	such as
+		ubuntu
+		fedora
+		rhel
+		centos + java + tomcat + app
+	
+
+OS IMAGE
+--------------
+Contains
+	BOOT FILE SYSTEM + ROOT FILE SYSTEM + USER FILE SYSTEM + APP FILE SYSTEM
+
+File System
+	Collections of dirs/files for specific purpose.
+
+	BOOT FILE SYSTEM	- KERNAL
+	ROOT FILE SYSTEM
+	USER FILE SYSTEM	
+	APP FILE SYSTEM
+
+3. Docker Registry
+	Collection of Repo
+	Each Repo has File System(S)
+	-- often called as image
+
+	PUBLIC
+		hub.docker.com
+		google registry
+
+	PVT
+		Artifactory
+		nexus
+		ECR
+
+4. Docker Container
+	The moment you RUN an image with docker...
+		ONE USER get created & 
+				mounted with copy of image
+				attached with one pid
+				attached with one network
+
+=====================================================================================
+Docker Workflow
+==============================
+The moment - you RUN image...
+	
+HUmna --> Docker Clinet -> DockerD
+	DockerD CHECK and if Image is Exist in Local Registry
+	- COntainerD --> Kernal
+	
+	DockerD CHECK and if Image DO NOT Exist in Local Registry
+		- Pull Image into Local Registry 
+		- COntainerD --> Kernal
+
+	The moment you RUN an image with docker...
+		ONE USER get created & 
+				mounted with copy of image
+				attached with one pid
+				attached with one network
+=======================================================================
+How to install Docker?
+==================================================================
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+52.66.152.193
+
+ 1  clear
+    2  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    3  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    4  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    5  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    6  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    7  sudo yum install -y docker-ce
+    8  docker -v
+    9  sudo systemctl enable docker
+   10  sudo systemctl start docker
+   11  docker info
+   12  clear
+   13  which docker
+   14  ps -eaf | grep docker
+   15  which containerd
+   16  docker version
+   17  history
+
+
+
+
+
+
+
+
+
