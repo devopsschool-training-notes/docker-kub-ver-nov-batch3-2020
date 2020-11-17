@@ -330,6 +330,7 @@ docker run -itd -v /opt/bkp:/opt/raju -v dev2:/opt/raju1 ubuntu
    45  clear
    46  ls
    47  df -kh
+   
    48  docker run -itd ubuntu
    49  docker ps
    50  df -kh
@@ -451,3 +452,55 @@ INSIDE A Container
   157  docker history up-up-git-apache-java
   158  history
 [root@ip-172-31-23-227 ove
+
+
+
+
+
+How to share an image
+—
+Method 1 -  Using TAR
+
+  5  docker images
+    6  docker save -o up-up-git-apache-java.tar up-up-git-apache-java
+    7  ls
+    8  docker ps
+    9  docker ps -a
+   10  docker stop 4b94ab2f2d2e
+   11  docker rm 4b94ab2f2d2e
+   12  docker images
+   13  docker rmi up-up-git-apache-java
+   14  clear
+   15  ls
+   16  docker images
+   17  ls
+   18  docker load -i up-up-git-apache-java.tar
+   19  docker images
+   20  docker run -itd up-up-git-apache-java
+   21  docker ps
+   22  history
+
+
+
+Method 2 - Using Public Registry
+
+Step 1 - Register at hub.docker.com
+Step 2 - Create a repo at registration
+Step 3 - MAKE SURE == REPOSITORY in LOCAL and REPOSITORY at HUB. MUST MATCH
+Step 4 - docker login
+Step 5 - docker push REPOSITORY
+
+19  docker images
+   20  docker run -itd up-up-git-apache-java
+   21  docker ps
+   22  history
+   23  clear
+   24  docker images
+   25  docker images
+   26  docker tag up-up-git-apache-java devopsschools/tues11nov
+   27  docker images
+   28  docker login
+   29  docker push devopsschools/tues11nov
+   30  history
+
+Method 3 - Using Pvt Registry
