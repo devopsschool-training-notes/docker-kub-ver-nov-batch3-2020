@@ -95,6 +95,193 @@ docker run ubuntu
 docker run -it ubuntu
 docker run -itd ubuntu
 
+=======================================================================
 
+
+logs	Fetch the logs of a container AKA PID 1 log
+ps	List containers
+stats	Display a live stream of container(s) resource usage statistics
+top	Display the running processes of a container
+events	Get real time events from the server
+
+
+  325  clear
+  326  clear
+  327  docker ps
+  328  docker logs 770c65020465
+  329  docker attach 770c65020465
+  330  docker logs 770c65020465
+  331  clear
+  332  docker help ps
+  333  docker stats
+  334  docker help run
+  335  clear
+  336  docker run -itd -m 100m  ubuntu
+  337  docker stats
+
+  338  history
+  339  clear
+  340  docker ps
+  341  ps -eaf | grep docker
+  342  docker ps
+  343  ps -eaf | grep docker
+  344  clear
+  345  docker ps
+  346  docker top 35cc2fe1e5e0
+  347  ps -eaf | grep docker
+  348  clear
+  349  clear
+  350  sl
+  351  docker ps -a
+  352  docker stop $(docker ps -a -q)
+  353  docker rm $(docker ps -a -q)
+  354  clear
+  355  docker ps -a
+  356  docker events
+  357  history
+====================================================================
+====================================================================
+Volume
+=====================================
+Prob - Anydata which you store in container.
+			container gone - data gone.
+[root@ip-172-31-25-223 volumes]# docker volume
+
+Usage:  docker volume COMMAND
+
+Manage volumes
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+Run 'docker volume COMMAND --help' for more information on 
+
+
+Solution
+--- Volume
+
+1. volume		/var/lib/docker/volumes
+2. mntfs		ANY LOCATION IN HOST
+3. tmpfs		IN Memory
+
+docker run -itd -v dev1:/opt/raju ubuntu
+docker run -itd -v dev1:/opt/raju -v dev2:/opt/raju1 ubuntu
+
+
+
+ 289  clear
+  290  docker volume
+  291  docker volume ls
+  292  cd volumes/
+  293  ls
+  294  clear
+  295  ls
+  296  cd 8fc6ee88e3c9e4a545535e7cef20297573dd0ab33860221c27bb35ef8de98cb3
+  297  ls
+  298  cd _data/
+  299  l;s
+  300  ls
+  301  cd ..
+  302  ls
+  303  clear
+  304  ls
+  305  cd ..
+  306  ls
+  307  cd 2e81185aa13378cef0b60cd4b029c35736611a2c5f11b244c6b52dcfec584722
+  308  ls
+  309  cd _data/
+  310  ls
+  311  clear
+  312  ls
+  313  cd ..
+  314  ls
+  315  cd ..
+  316  ls
+  317  clea
+  318  clear
+  319  docker volume
+  320  docker volume prune
+  321  clear
+  322  ls
+  323  docker ps
+  324  docker volume
+  325  docker volume ls
+  326  docker volume inspect d22be5781dc272533d2ff769cd1f418b6da21dcfc62f28ccffa834c6e900ff48
+  327  clear
+  328  ls
+  329  docker volume cretae
+  330  docker volume create
+  331  ls
+  332  docker volume create
+  333  ls
+  334  clear
+  335  ls
+  336  docker volume create dev1
+  337  docker volume create dev2
+  338  docker volume ls
+  339  ls
+  340  docker volume inspect dev1
+  341  clear
+  342  ls
+  343  clear
+  344  docker run -itd -v dev1:/opt/raju ubuntu
+  345  docker ps
+  346  docker exec 64fb83a7121a df -kh
+  347  docker exec 64fb83a7121a ls /opt/
+  348  docker run -itd -v dev1:/opt/raju -v dev2:/opt/raju1 ubuntu
+  349  clear
+  350  docker ps
+  351  docker exec b2cc492db300 df -kh
+  352  docker volume
+ 352  docker volume
+  353  history
+  354  clear
+  355  ls
+  356  docker ps
+  357  docker exec b2cc492db300 ls /opt
+  358  docker exec b2cc492db300 touch /opt/raju1/raju1.txt
+  359  docker exec b2cc492db300 touch /opt/raju/raju.txt
+  360  docker exec 64fb83a7121a ls /opt/raju
+  361  ls
+  362  cd dev1
+  363  clear
+  364  cd _data/
+  365  ls
+  366  touch rama.txt
+  367  docker exec 64fb83a7121a ls /opt/raju
+  368  docker ps
+  369  docker stop b2cc492db300 64fb83a7121a
+  370  docker rm b2cc492db300 64fb83a7121a
+  371  cleart
+  372  docker
+  373  docker volume ls
+  374  clear
+  375  ls
+  376  cd ..
+  377  ls
+  378  cd ..
+  379  ls
+  380  cd dev1/_data/
+  381  ls
+  382  cdd -
+  383  cd dev2/_data/
+  384  cd dev2/_data/
+  385  cd ../..
+  386  cd dev2/_data/
+  387  ls
+  388  docker run -itd -v dev1:/opt/raju ubuntu
+  389  clear
+  390  docker ps
+  391  docker exec df414a9a0c84 ls /opt
+  392  docker ps/raju
+  393  docker exec df414a9a0c84 ls /opt/raju
+
+
+docker run -itd -v /opt/bkp:/opt/raju ubuntu
+docker run -itd -v /opt/bkp:/opt/raju -v dev2:/opt/raju1 ubuntu
 
 
