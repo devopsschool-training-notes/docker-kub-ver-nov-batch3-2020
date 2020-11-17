@@ -373,3 +373,81 @@ docker run -itd -v /opt/bkp:/opt/raju -v dev2:/opt/raju1 ubuntu
    88     14  cd overlay2/
    89     15  ls
    90  history
+   =======================================
+   How to create an image?
+- Using Existing Container - Manual 
+- Using Dockerfile - Automated 
+
+
+Req
+———————————————
+Base - ubuntu + git + apache + java === Container. 
+=========================================
+
+INSIDE A Container
+
+ 1  git
+    2  which apache2
+    3  java
+    4  apt-get install git
+    5  apt-get update
+    6  clear
+    7  apt-get update
+    8  apt-get install git
+    9  clear
+   10  git
+   11  clear
+   12  apt-get install apache2
+   13  which apache2
+   14  java
+   15  pt-get install openjdk-8-jre
+   16  apt-get install openjdk-8-jre
+   17  clear
+   18  java
+   19  clear
+   20  history
+
+   
+   
+   
+   
+   
+   =================================
+   
+   123  docker ps
+  124  docker commit -m"up-up-git-apache-java" d2a1a3012812 up-up-git-apache-java
+  125  docker images
+  126  docker history ubuntu
+  127  docker history up-up-git-apache-java
+  128  ls
+  129  cd ..
+  130  ls
+  131  docker ps -a
+  132  docker stop d2a1a3012812 6f73016e6cd6
+  133  docker rm d2a1a3012812 6f73016e6cd6
+  134  docker ps -a
+  135  ls
+  136  ls -lrt
+  137  du -sh a7971b360940b0b3723e3977cf403013bb508310bd009be6b8b0ea068322de35
+  138  cd a7971b360940b0b3723e3977cf403013bb508310bd009be6b8b0ea068322de35
+  139  clear
+  140  ls
+  141  cd diff/
+  142  ls
+  143  cd ..
+  144  ls
+  145  d ..
+  146  cd ..
+  147  ls
+  148  docker run -itd ubuntu
+  149  docker images
+  150  docker run -itd --name all up-up-git-apache-java
+  151  docker ps
+  152  docker exec e1bb33a46c0d git
+  153  docker exec 4b94ab2f2d2e git
+  154  docker ps
+  155  docker images
+  156  docker history ubuntu
+  157  docker history up-up-git-apache-java
+  158  history
+[root@ip-172-31-23-227 ove
