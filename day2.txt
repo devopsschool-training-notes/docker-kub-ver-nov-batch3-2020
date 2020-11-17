@@ -1,0 +1,100 @@
+How to access a container from outside of the host?
+===============================================
+13.233.60.56
+
+docker run -d jenkins
+docker run -d -p 8080:8080 jenkins
+
+8080:8080	NODE-EXTERNAL:CONTAINER
+
+docker run -d -p 8090:8080 jenkins
+
+docker run -d -P jenkins
+
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+
+
+--
+0.0.0.0:8080->8080
+----------------------
+REQUEST FROM ANYWEHERE:TOPortNode8080 --> ContainerIPtoPort8080
+
+0.0.0.0:32769->8080
+----------------------
+REQUEST FROM ANYWEHERE:TOPortNode32769 --> ContainerIPtoPort8080
+====================================================================
+
+cp
+
+  276  docker ps
+  277  vi devopsschool.txt
+  278  docker exec a9eed37538a0 ls /opt
+  279  docker cp devopsschool.txt a9eed37538a0:/opt
+  280  docker exec a9eed37538a0 ls /opt
+  281  ls
+  282  rm -rf devopsschool.txt
+  283  docker cp a9eed37538a0:/opt/devopsschool.txt .
+  284  ls
+  285  more devopsschool.txt
+
+diff
+	You can see a files/dires which is
+		- ADDED
+		- DELETED
+		- CHANGED
+	after a creation of container.
+
+
+root@f8b289702607:/etc# rm -rf issue
+root@f8b289702607:/etc# more issue.net
+Ubuntu 20.04.1 LTS
+root@f8b289702607:/etc# cat >> issue.net
+I love docker
+root@f8b289702607:/etc# more issue.net
+Ubuntu 20.04.1 LTS
+I love docker
+[root@ip-172-31-25-223 centos]#
+
+
+  291  clear
+  292  docker ps
+  293  docker attach f8b289702607
+  294  clear
+  295  docker ps
+  296  docker diff f8b289702607
+  297  docker logs f8b289702607
+
+
+port
+
+  300  docker ps
+  301  docker port f8b289702607
+  302  docker port bd9126b3899c
+  303  docker port a9eed37538a0
+  304  docker port 5d9478dd6933
+
+rename
+
+ 309  docker rename 7a2e0fb5dc11 dev1
+  310  docker ps
+  311  clear
+  312  docker run -itd --name dev2 ubuntu
+  313  docker ps
+
+
+Assignemnt
+==========================
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+
+
+
+
+
+docker run ubuntu
+docker run -it ubuntu
+docker run -itd ubuntu
+
+
+
+
