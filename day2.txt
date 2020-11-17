@@ -283,5 +283,5 @@ docker run -itd -v dev1:/opt/raju -v dev2:/opt/raju1 ubuntu
 
 docker run -itd -v /opt/bkp:/opt/raju ubuntu
 docker run -itd -v /opt/bkp:/opt/raju -v dev2:/opt/raju1 ubuntu
-
+    https://palmetosolutions.webex.com/palmetosolutions/j.php?MTID=mc998722306a1ba05d91ecd5ac499b783
 
