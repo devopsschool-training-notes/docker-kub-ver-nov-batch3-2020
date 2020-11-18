@@ -77,12 +77,101 @@ CMD and ENTRYPOINT
 =============================================================================================
 https://docs.docker.com/develop/develop-images/multistage-build/
 
+===================================================================
+DOCKER COMPOSE
+===================================================================
+DEV -- QA==== you would use DC.
+
+	-- Tools
+	-- docker-compose
+		- LINUX
+		- MAC
+		- WINDOWS
+	-- Automate a work flow and lifecycle of Container.
+	
+
+	docker-compose
+			would read one file...
+			docker-compose.yaml
+			contains.........
+-----------------------------------------------
+Servcies:
+	Servcie1(WEB)
+		build - dockefile
+		image - imagenmae
+		port
+		env
+		volume
+		network
+
+	Servcie2(APP)
+		build - dockefile
+		image - imagenmae
+		port
+		env
+		volume
+		network
+
+	Servcie3(DB)
+		build - dockefile
+		image - imagenmae
+		port
+		env
+		volume
+		network
+=================================================
+$ docker-compose build
+
+$ docker-compose up -d 
+		build-> create --> start --> attached
+
+$ docker-compose down
+		stop and delete
+
+$ docker-compose stop
+
+$ docker-compose start
+
+$ docker-compose logs
+
+$ docker-compose ps
 
 
 
 
-
-
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
 
 
 
