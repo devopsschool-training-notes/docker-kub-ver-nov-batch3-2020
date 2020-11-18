@@ -51,6 +51,39 @@ ENV JAVA_HOME=/opt/java
 VOLUME /tmp/ramukaka
 
 docker build -t test1 -f dockerfilename .
+====================================================
+How to SET PID1?
+or How to RUN my apps in Container?
+=======================================
+- CMD or ENTRYPOINT
+
+=======================================
+CMD vs ENTRYPOINT
+=======================================
+CMD 
+	CAN BE REPLACED DURING RUN TIME
+ENTRYPOINT	
+	CAN NOT BE REPLACED DURING RUN TIME
+
+Lab -
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+
+Assignment
+========================
+CMD and CMD
+ENTRYPOINT and ENTRYPOINT	
+CMD and ENTRYPOINT	
+=============================================================================================
+https://docs.docker.com/develop/develop-images/multistage-build/
+
+
+
+
+
+
+
+
 
 
 
