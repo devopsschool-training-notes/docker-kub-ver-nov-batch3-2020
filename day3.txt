@@ -1,0 +1,62 @@
+How to create image using Dockerfile
+===============================================
+dockerfile
+	- INI FILE
+	- Contains 
+		LINE OF INSTRUCTION(S)
+			on WHAT TO HAVE on EACH LAYER
+		Means
+		ONE LINE ==== ONE LAYER
+
+
+Manual Flow
+--------------
+Base Image
+1. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+Container from Previous Line Layer 
+2. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+Container from Previous Line Layer
+3. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+Container from Previous Line Layer
+4. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+Container from Previous Line Layer
+5. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+Container from Previous Line Layer
+6. Create -> Start -> Attach --> RUN SOME COMMANDS --> Deattached --> COMMIT
+
+
+Jenkins
+	openjdk:8-jdk
+		buildpack-deps:buster-scm
+				buildpack-deps:buster-curl
+						debian:buster
+							scratch
+=====================================================================
+FROM ubuntu
+MAINTAINER Rajesh Kumar DevOps@Rajeshkumar.xyz
+RUN apt-get update
+RUN apt-get install git -y
+COPY index.html /opt
+ENV JAVA_HOME=/opt/java
+VOLUME /tmp/ramukaka
+
+docker build -t test1 .
+
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar DevOps@Rajeshkumar.xyz
+RUN apt-get update && apt-get install git -y
+COPY index.html /opt
+ENV JAVA_HOME=/opt/java
+VOLUME /tmp/ramukaka
+
+docker build -t test1 -f dockerfilename .
+
+
+
+
+
+
+
+
+
