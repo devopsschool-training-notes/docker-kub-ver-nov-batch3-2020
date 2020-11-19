@@ -1,0 +1,115 @@
+Master
+	API Server -> POD -> Container -> Image -> Google Registry	
+	Etcd -> POD -> Container -> Image -> Google Registry
+	Controller Manager -> POD -> Container -> Image -> Google Registry
+	Schedular -> POD -> Container -> Image -> Google Registry
+
+	Kube Proxy -> POD -> Container -> Image -> Google Registry
+
+	Kubeadm init
+	Kubelet
+	Docker
+	Kubectl
+		
+Worker
+	Kube Proxy -> POD -> Container -> Image -> Google Registry
+
+	Kubeadm join
+	Kubelet
+	Docker
+	Kubectl
+
+Workstation
+	Kubectl
+================================================================
+How to setup a clustor - 40 Supported PLATFORM
+
+Learning
+	Laptop  -> Vbox -> 1 VM - (MASTER + WORKER) = minikube
+
+Production
+	Physcial server or Virtual Server - Manually - Kubeadm 
+	
+	Cloud - Manually - KOPS
+
+	Hosted - 
+		AWS	- EKS
+		Azure	- AKS
+		GC	- GKE	
+
+
+
+
+CENTOS 2 = MASTER + WORKSTATION
+============================================================
+65.0.5.97
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+Master = Step 1  - Step 10 
+
+WORKSTATION in MASTER = Step 11
+
+VERIFY MASTER from WORKSTATION = Step 12 
+
+Install POD network from WORKSTATION into MASTER = Step 13
+
+========================================================================
+CENTOS 1 = WORKER
+		- REMOVE EXISTING DOCKER FIRST
+
+$ docker rm $(docker ps -aq)
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+$ docker rmi $(docker images -q)
+$ docker rm -f -v $(docker ps -q)
+$ iptables --flush
+$ echo "1" >/proc/sys/net/bridge/bridge-nf-call-iptables
+$ sudo yum remove docker 
+$ sudo yum remove docker docker-client 
+$ sudo yum remove docker docker-client-latest 
+$ sudo yum remove docker docker-common
+$ sudo yum remove docker docker-latest 
+$ sudo yum remove docker docker-latest-logrotate
+$ sudo yum remove docker docker-logrotate 
+$ sudo yum remove docker docker-selinux 
+$ sudo yum remove docker docker-engine-selinux
+$ sudo yum remove docker docker-engine
+$ sudo rm -rf /var/lib/docker
+
+# Follow Step 1 
+# Follow Step 2
+# Follow Step 3
+# Follow Step 4
+# Follow Step 5
+# Follow Step 6
+# Follow Step 7
+# Follow Step 8
+
+&&&&
+kubeadm join
+
+
+
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.9.48:6443 --token 4lnnwq.mmtumjht99lp3t6p \
+    --discovery-token-ca-cert-hash sha256:38ef791588269977840cd82d344dcedd792a095a92c32410775c462454aec2bb
+=============================================
+65.0.92.226
+
+
+https://www.devopsschool.com/blog/understanding-the-tools-sets-in-kubernetes-ecosystem/
+https://www.devopsschool.com/blog/list-of-top-service-mesh-implementation-tools-for-microservices-and-kubernetes/
+
+
