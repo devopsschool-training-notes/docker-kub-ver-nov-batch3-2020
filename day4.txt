@@ -112,5 +112,172 @@ kubeadm join 172.31.9.48:6443 --token 4lnnwq.mmtumjht99lp3t6p \
 
 https://www.devopsschool.com/blog/understanding-the-tools-sets-in-kubernetes-ecosystem/
 https://www.devopsschool.com/blog/list-of-top-service-mesh-implementation-tools-for-microservices-and-kubernetes/
+=================================================================================
+
+How Kubectl would be configured with Clustor - API server?
+==============================================================
+kubectl 
+	$USER_HOME/.kube/config
+
+
+Content of config? -- YAML
+--------------------------------------
+Clustor(S):
+		Clustor1: http://4.5.56.6:6400
+		Clustor2: http://4.6.56.6:6400
+		Clustor3: http://4.6.56.6:6400
+User(S):
+		User1: Key and cert
+		User2: Key and cert
+		User3: Key and cert
+Context(S):
+		Context1 = Clustor1 + User2
+		Context2 = Clustor2 + User1
+		Context3 = Clustor3 + User3
+Curr-context:
+		Context2
+
+==========================================================================
+What is my desire? -- api-resources
+=================================
+
+nodes
+namespaces
+pods
+
+[centos@ip-172-31-9-48 ~]$ kubectl api-resources
+NAME                              SHORTNAMES   APIGROUP                       NAMESPACED   KIND
+bindings                                                                      true         Binding
+componentstatuses                 cs                                          false        ComponentStatus
+configmaps                        cm                                          true         ConfigMap
+endpoints                         ep                                          true         Endpoints
+events                            ev                                          true         Event
+limitranges                       limits                                      true         LimitRange
+namespaces                        ns                                          false        Namespace
+nodes                             no                                          false        Node
+persistentvolumeclaims            pvc                                         true         PersistentVolumeClaim
+persistentvolumes                 pv                                          false        PersistentVolume
+pods                              po                                          true         Pod
+podtemplates                                                                  true         PodTemplate
+replicationcontrollers            rc                                          true         ReplicationController
+resourcequotas                    quota                                       true         ResourceQuota
+secrets                                                                       true         Secret
+serviceaccounts                   sa                                          true         ServiceAccount
+services                          svc                                         true         Service
+mutatingwebhookconfigurations                  admissionregistration.k8s.io   false        MutatingWebhookConfiguration
+validatingwebhookconfigurations                admissionregistration.k8s.io   false        ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds     apiextensions.k8s.io           false        CustomResourceDefinition
+apiservices                                    apiregistration.k8s.io         false        APIService
+controllerrevisions                            apps                           true         ControllerRevision
+daemonsets                        ds           apps                           true         DaemonSet
+deployments                       deploy       apps                           true         Deployment
+replicasets                       rs           apps                           true         ReplicaSet
+statefulsets                      sts          apps                           true         StatefulSet
+tokenreviews                                   authentication.k8s.io          false        TokenReview
+localsubjectaccessreviews                      authorization.k8s.io           true         LocalSubjectAccessReview
+selfsubjectaccessreviews                       authorization.k8s.io           false        SelfSubjectAccessReview
+selfsubjectrulesreviews                        authorization.k8s.io           false        SelfSubjectRulesReview
+subjectaccessreviews                           authorization.k8s.io           false        SubjectAccessReview
+horizontalpodautoscalers          hpa          autoscaling                    true         HorizontalPodAutoscaler
+cronjobs                          cj           batch                          true         CronJob
+jobs                                           batch                          true         Job
+certificatesigningrequests        csr          certificates.k8s.io            false        CertificateSigningRequest
+leases                                         coordination.k8s.io            true         Lease
+endpointslices                                 discovery.k8s.io               true         EndpointSlice
+events                            ev           events.k8s.io                  true         Event
+ingresses                         ing          extensions                     true         Ingress
+ingressclasses                                 networking.k8s.io              false        IngressClass
+ingresses                         ing          networking.k8s.io              true         Ingress
+networkpolicies                   netpol       networking.k8s.io              true         NetworkPolicy
+runtimeclasses                                 node.k8s.io                    false        RuntimeClass
+poddisruptionbudgets              pdb          policy                         true         PodDisruptionBudget
+podsecuritypolicies               psp          policy                         false        PodSecurityPolicy
+clusterrolebindings                            rbac.authorization.k8s.io      false        ClusterRoleBinding
+clusterroles                                   rbac.authorization.k8s.io      false        ClusterRole
+rolebindings                                   rbac.authorization.k8s.io      true         RoleBinding
+roles                                          rbac.authorization.k8s.io      true         Role
+priorityclasses                   pc           scheduling.k8s.io              false        PriorityClass
+csidrivers                                     storage.k8s.io                 false        CSIDriver
+csinodes                                       storage.k8s.io                 false        CSINode
+storageclasses                    sc           storage.k8s.io                 false        StorageClass
+volumeattachments                              storage.k8s.io                 false        VolumeAttachment
+
+kubectl
+kubectl version
+kubectl cluster-info
+kubectl api-resources
+kubectl api-versions
+kubectl get pods
+kubectl get pods --all--namespaces
+kubeclt get ns
+kubectl get pods -n=kube-system
+kubectl config view
+   38  kubectl config views
+   39  kubectl config view
+   40  more $HOME/.kube/config
+==============================================================
+AUTH -
+
+VERB - GET PUT POST DELETE
+==========================================
+CRUD
+	CREATE 
+		CMD
+			create
+		YAML
+			create -f yamlfile
+	READ
+		CMD
+			get
+	UPDATE
+		CMD
+			edit
+		YAML
+			apply -f yamlfile
+	DELETE
+		CMD
+			delete
+		YAML
+			delete -f yamlfile
+
+===============================================================
+https://nirmata.com/2018/11/30/kubernetes-namespaces/
+
+  45  clear
+   46  kubectl get ns
+   47  kubectl create -h
+   48  clear
+   49  kubectl create namespace -h
+   50  clear
+   51  kubectl create namespace dev
+   52  kubectl get ns
+   53  kubectl create namespace qa
+   54  kubectl get ns
+   55  kubectl edit ns dev
+   56  kubectl delete ns qa
+   57  kubectl get ns
+=========================================================
+30 mins
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
