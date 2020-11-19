@@ -75,6 +75,7 @@ $ sudo yum remove docker docker-selinux
 $ sudo yum remove docker docker-engine-selinux
 $ sudo yum remove docker docker-engine
 $ sudo rm -rf /var/lib/docker
+$ yum remove docker-ce docker-ce-cli
 
 # Follow Step 1 
 # Follow Step 2
