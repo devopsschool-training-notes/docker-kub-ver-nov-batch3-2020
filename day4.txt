@@ -258,25 +258,174 @@ https://nirmata.com/2018/11/30/kubernetes-namespaces/
    57  kubectl get ns
 =========================================================
 30 mins
+================================================================================
+POD
+================================================================================
+
+13.126.153.175
+==============================
+
+
+pod.yaml
+-------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+68  cd rajesh/
+   69  pwd
+   70  ls
+   71  vi pod.yam;
+   72  mv pod.yam pod.yaml
+   73  ls
+   74  kubectl get ns
+   75  kubectl create ns rajesh
+   76  clear
+   77  kubectl get ns
+   78  kubectl create -f pod.yaml
+   79  kubectl get pods
+   80  kubectl get pods -o wide
+   81  kubectl get pods -o wide --show-labesl
+   82  kubectl get pods -o wide --show-labels
+   83  clear
+   84  kubectl create -f pod.yaml
+   85  kubectl get pods --all-namespaces
+   86  clear
+   87  kubectl create -f pod.yaml -n=rajesh
+   88  kubectl get pods -n=rajesh
+   89  kubectl get pods
+   90  clear
+   91  kubectl get pods -n=rajesh
+   92  kubectl get pods -n=rajesh -o wide --show-labels
+   93  kubectl edit pod hello-pod -n=rajesh
+   94  kubectl get pods -n=rajesh -o wide --show-labels
+   95  ls
+   96  vi pod.yaml
+   97  kubectl apply -f pod.yaml -n=rajesh
+   98  kubectl get pods -n=rajesh -o wide --show-labels
+   99  clear
+  100  kubectl get pods -n=rajesh
+  101  kubectl delete pod hello-pod -n=rajesh
+  102  kubectl get pods -n=rajesh
+  103  kubectl get pods
+  104  kubectl delete -f pod.yaml
+
+=====================================================================
+How to consume pods?
+------------------------------------------------
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  cp            Copy files and directories to and from containers.
+  auth          Inspect authorization
+
+
+
+ 110  kubectl get ns
+  111  kubectl describe ns rajesh3.
+  112  kubectl describe ns rajesh3
+  113  kubectl describe ns rajesh
+  114  kubectl get nodes
+  115  clear
+  116  kubectl describe ns rajesh
+  117  kubectl get ns
+  118  kubectl describe ns rajesh
+  119  kubectl get nodes
+  120  kubectl describe nodes ip-172-31-9-48.ap-south-1.compute.internal
+  121  kubectl get pods -n=rajesh
+  122  clear
+  123  ls
+  124  kubectl create -f pod.yaml -n=rajesh
+  125  kubectl get pods -n=rajesh
+  126  kubectl describe pod hello-pod -n=rajesh
+
+
+
+ 128  clear
+  129  kubectl get pods -n=rajesh
+  130  kubectl logs hello-pod
+  131  kubectl logs hello-pod -n=rajesh
+  132  kubectl get pods -n=rajesh -o wide
+  133  curl http://10.44.0.1
+  134  clear
+  135  kubectl get pods -n=rajesh -o wide
+  136  kubectl logs hello-pod -n=rajesh
+  137  curl http://10.44.0.1
+  138  kubectl logs hello-pod -n=rajesh
+  139  clear
+  140  kubectl logs hello-pod -n=rajesh
+  141  watch kubectl logs hello-pod -n=rajesh
+  142  clear
 
 
 
 
+ 147  clear
+  148  kubectl get pods -n=rajesh
+  149  kubectl get pods -n=rajesh -o wide
+  150  kubectl attach hello-pod
+  151  kubectl attach hello-pod -n=rajesh
 
 
 
+155  kubectl get pods -n=rajesh
+  156  kubectl exec hello-pod ls
+  157  kubectl exec hello-pod ls -n=rajesh
+  158  clear
+  159  kubectl exec -it hello-pod /bin/bash -n=rajesh
+  160  kubectl exec -it hello-pod /bin/bash -n=rajesh -c dasfdsaf
+  161  kubectl exec -h
+
+
+port-forward
+
+kubectl port-forward pod/hello-pod 8888:80 -n=rajesh
 
 
 
+http://13.126.153.175:8888/
+
+
+kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80 -n=rajesh
 
 
 
+ 169  kubectl port-forward -h
+  170  clear
+  171  ls
+  172  curl http://localhost:8888
+  173  kubectl port-forward pod/hello-pod 8888:80 -n=rajesh
+  174  kubectl port-forward -h
+  175  clear
+  176  kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80 -n=rajesh
+  177  history
 
+  181  kubectl cp -h
+  182  clear
+  183  ls
+  184  kubectl get pods -n=rajesh
+  185  kubectl exec hello-pod ls /tmp
+  186  kubectl exec hello-pod ls /tmp -n=rajesh
+  187  kubectl cp pod.yaml hello-pod:/tmp -n=rajesh
+  188  kubectl exec hello-pod ls /tmp -n=rajesh
+  189  history
 
-
-
-
-
+  191  kubectl auth
+  192  kubectl auth can-i create pod
+  193  kubectl auth can-i delete ns
+  194  kubectl auth can-i -h
 
 
 
