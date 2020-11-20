@@ -213,5 +213,167 @@ Statefullsets
 
 
 
+[centos@ip-172-31-9-48 rajesh]$ kubectl create service -h
+Create a service using specified subcommand.
+
+Aliases:
+service, svc
+
+Available Commands:
+  clusterip    Create a ClusterIP service.
+  externalname Create an ExternalName service.
+  loadbalancer Create a LoadBalancer service.
+  nodeport     Create a NodePort service.
+
+Usage:
+  kubectl create service [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+[centos@ip-172-31-9-48 rajesh]$
+
+ 380  vi rc.yaml
+  381  vi pod.yaml
+  382  cp pod.yaml pod1.yaml
+  383  vi pod1.yaml
+  384  vi pod.yaml
+  385  clear
+  386  ls
+  387  kubectl apply -f pod1.yaml
+  388  kubectl delete -f pod1.yaml
+  389  kubectl delete -f pod1.yaml -n=rajesh
+  390  kubectl apply -f pod1.yaml -n=rajesh
+  391  kubectl apply -f pod.yaml -n=rajesh
+  392  kubectl get pod -n=rajesh
+  393  kubectl get pod -n=rajesh -o wide
+  394  curl http://10.44.0.2
+  395  curl http://10.44.0.1
+  396  clear
+  397  ls
+  398  kubectl create -h
+  399  clear
+  400  kubectl create service -h
+==================================
+TYPES of Services
+====================================
+clusterip    Create a ClusterIP service.	DONE
+nodeport     Create a NodePort service.
+loadbalancer Create a LoadBalancer service.
+
+  
+
+
+
+
+=========================================================
+clusterip = cluster ip == Service would have IP address of Clustor network
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+
+
+nodeport == Node Port = Service is accessible at Port of the NODE...
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		
+		- This service get port-forward at EACH NODE of the cluster.
+
+loadbalancer	
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		
+		- This service get port-forward at EACH NODE of the cluster.
+
+		- Create External loadbalancer at CLOUD platoform
+		- Add Each Node of the cluster to the xternal loadbalancer
+=========================================
+13.233.157.67
+
+
+What is Service?
+=========================
+
+How PROD Setup is DONE WITh VMs?
+=====================================
+
+Load Balancer
+========================
+- Network LB === SERVICE 
+- App LB == Ingress
+==========================
+
+
+
+SERVICE - Profile(MS)
+	POD 1
+	POD 1
+	POD 1
+	POD 1
+
+kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;
+
+
+
+ 398  kubectl create -h
+  399  clear
+  400  kubectl create service -h
+  401  history
+  402  clear
+  403  ls
+  404  more pod1.yaml
+  405  clear
+  406  kubectl get pods -n=rajesh -o wide
+  407  curl http://10.44.0.1
+  408  curl http://10.44.0.2
+  409  ls
+  410  kubectl get svc -n=rajesh
+  411  kubectl create service -h
+  412  kubectl create service clusterip -h
+  413  clear
+  414  kubectl create service clusterip -h
+  415  clear
+  416   kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+  417  kubectl get svc -n=rajesh
+  418  kubectl describe svc my-cs -n=rajesh
+  419  clear
+  420  ls
+  421  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;
+  422  kubectl edit svc my-cs -n=rajesh
+  423  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;
+  424  kubectl describe svc my-cs -n=rajesh
+  425  kubectl edit svc my-cs -n=rajesh
+  426  clear
+  427  kubectl describe svc my-cs -n=rajesh
+  428  curl http://10.111.147.66
+  429  curl http://10.44.0.1:80
+  430  curl http://10.44.0.2:80
+  431  curl http://10.111.147.66:5678
+  432  clear
+  433  watch curl http://10.111.147.66:5678
+
+
+
+kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+
+13.235.86.217:30211
+
+
+kubectl create service loadbalancer my-lb --tcp=5678:80 -n=rajesh
+
+
+http://ver-1126237619.ap-south-1.elb.amazonaws.com/
+
+http://ver.devopsschool.com
+==========================
+NETWORK - Service
+APP - ingress
+https://www.devopsschool.com/blog/?s=ingress
+
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
+
+
+
+
 
 
