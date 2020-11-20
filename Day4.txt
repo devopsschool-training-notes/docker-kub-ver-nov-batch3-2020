@@ -1,0 +1,71 @@
+13.235.86.217
+================================
+ReplicationController
+
+
+Replication	-  Replication Pod to MANY
+Controller	- a Desire number of PODS -- MUst Match with --- Actual num of pods.
+
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
+
+
+ 207  cd rajesh/
+  208  ls
+  209  vi rc.yaml
+  210  kubectl create -f rc.yaml -n=rajesh
+  211  kubectl get rc -n=rajesh
+  212  kubectl describe rc hello-rc -n=rajesh
+  213  clear
+  214  kubectl get pods -n=rajesh
+  215  kubectl describe pod hello-rc-lshsv -n=rajesh
+  216  kubectl get pods -n=rajesh
+  217  kubectl describe pod hello-pod -n=rajesh
+  218  clear
+  219  ls
+  220  kubectl get pods -n=rajesh
+  221  kubectl get rc -n=rajesh
+  222  clear
+  223  ls
+  224  vi rc.yaml
+  225  kubectl get rc -n=rajesh
+  226  kubectl apply -f rc.yaml -n=rajesh
+  227  kubectl get rc -n=rajesh
+  228  kubectl edit rc hello-rc
+  229  kubectl edit rc hello-rc -n=rajesh
+  230  kubectl get rc -n=rajesh
+  231  kubectl get pods -n=rajesh
+  232  kubectl
+  233  clear
+  234  kubectl scale -h
+  235  kubectl get rc -n=rajesh
+  236  clear
+  237  kubectl scale --replicas=5 rc/hello-rc -n=rajesh
+  238  kubectl get rc -n=rajesh
+  239  kubectl delete -f rc.yaml -n=rajesh
+  240  kubectl get rc -n=rajesh
+  241  kubectl get pods -n=rajesh
+  242  clear
+  243  history
+
+ 246  kubectl apply -f rc.yaml -n=rajesh
+  247  kubectl get pods -n=rajesh
+  248  kubectl delete pod hello-rc-fq55c hello-rc-hp7nw -n=rajesh
+  249  kubectl get pods -n=rajesh
+  250  history
+
