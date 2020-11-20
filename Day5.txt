@@ -68,4 +68,64 @@ spec:
   248  kubectl delete pod hello-rc-fq55c hello-rc-hp7nw -n=rajesh
   249  kubectl get pods -n=rajesh
   250  history
+===============================================================
+Deployment
+============================================================
+Replication + Controller
+========================
+	ReplicaSets V2 of RC
+
+Versioning
+Rollout 
+Rollback
+=========================
+
+257  kubectl create -h
+  258  clear
+  259  kubectl create deployment -h
+  260  clear
+  261  ls
+  262  kubectl get deploy -n=rajesh
+  263  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  264  kubectl get deploy -n=rajesh
+  265  kubectl get pods -n=rajesh
+  266  kubectl delete rc hello-rc -n=rajesh
+  267  kubectl get pods -n=rajesh
+  268  clear
+  269  kubectl get pods -n=rajesh
+  270  kubectl describe deploy my-dep -n=rajesh
+  271  kubectl get rs -n=rajesh
+  272  kubectl get pods -n=rajesh
+  273  kubectl describe pod my-dep-747b4ffb56 -n=rajesh
+  274  clear
+  275  ls
+  276  kubectl get deploy -n=rajesh
+  277  kubectl edit deploy my-dep -n=rajesh
+  278  kubectl get deploy -n=rajesh
+  279  clear
+  280  kubectl get deploy -n=rajesh
+  281  kubectl get get pods -n=rajesh
+  282  kubectl  get pods -n=rajesh
+  283  kubectl scale -h
+  284  clear
+  285  kubectl get deploy -n=rajesh
+  286  kubectl scale --replicas=6 deploy/my-dep -n=rajesh
+  287  kubectl get deploy -n=rajesh
+  288  kubectl get pods -n=rajesh
+  289  kubectl get pods -n=rajesh -=o wide
+  290  kubectl get pods -n=rajesh -o wide
+  291  curl http://10.44.0.1
+  292  kubectl get pods -n=rajesh -o wide
+  293  curl http://10.44.0.5
+  294  clear
+  295  kubeclt get pods -n=rajesh
+  296  kubectl get pods -n=rajesh
+  297  kubectl delete pod my-dep-747b4ffb56-cjg96 my-dep-747b4ffb56-hdk8s my-dep-747b4ffb56-jlh92 my-dep-747b4ffb56-nxkds my-dep-747b4ffb56-p7t8q -n=rajesh
+  298  kubectl get pods -n=rajesh
+  299  history
+
+Kubernetes Resource requests and limits of Pod and Container
+https://www.devopsschool.com/blog/kubernetes-resource-requests-and-limits-of-pod-and-container/
+
+
 
