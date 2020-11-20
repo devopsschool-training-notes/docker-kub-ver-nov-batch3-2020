@@ -127,5 +127,91 @@ Rollback
 Kubernetes Resource requests and limits of Pod and Container
 https://www.devopsschool.com/blog/kubernetes-resource-requests-and-limits-of-pod-and-container/
 
+Versioning
+Rollout 
+Rollback
+
+
+  305  kubectl explain ns
+  306  kubectl explain ns.spec
+  307  kubectl explain pods
+  308  kubectl explain pods.spec
+  309  kubectl explain pods.spec.containers
+  310  clear
+  311  kubectl explain rc
+  312  kubectl explain rc.spec
+  313  kubectl explain rc.spec.template
+  314  kubectl explain rc.spec.template.spec
+  315  kubectl explain deploy
+  316  kubectl explain deploy.spec
+  317  kubectl explain deploy.spec.template
+  318  kubectl explain deploy.spec.template.spec
+  319  kubectl explain deploy.spec.template.spec.containers
+  320  history
+
+
+
+ 321  clear
+  322  kubectl get deploy -n=rajesh
+  323  kubectl get deploy my-dep -n=rajesh
+  324  kubectl get deploy my-dep -n=rajesh -o json
+  325  kubectl get deploy my-dep -n=rajesh -o yaml
+  326  clear
+  327  kubectl get deploy my-dep -n=rajesh -o yaml >> dep.yaml
+  328  ls
+  329  vi dep.yaml
+  330  kubectl apply -f dep.yaml -n=rajesh
+  331  kubectl get deploy -n=rajesh
+  332  history
+
+
+Versioning
+Rollout
+  334  kubectl rollout
+  335  kubectl get deploy -n=rajesh
+  336  kubectl rollout history deploy/my-dep
+  337  kubectl rollout history deploy/my-dep -n=rajesh
+  338  kubectl edit deploy/my-dep -n=rajesh
+  339  kubectl rollout history deploy/my-dep -n=rajesh
+  340  kubectl get pods -n=rajesh
+  341  kubectl get pods -n=rajesh -o wide
+  342  curl http://10.44.0.3
+  343  history
+
+
+kubectl rollout undo deploy/my-dep --to-revision=1 -n=rajesh
+kubectl rollout status deploy/my-dep -n=rajesh
+kubectl rollout history deploy/my-dep -n=rajesh
+
+ 344  curl http://10.44.0.3
+  345  kubectl rollout history deploy/my-dep -n=rajesh
+  346  clear
+  347  kubectl rollout history deploy/my-dep -n=rajesh
+  348  curl http://10.44.0.3
+  349  kubectl rollout -h
+  350  kubectl rollout status deploy/my-dep -n=rajesh
+  351  kubectl rollout history deploy/my-dep -n=rajesh
+  352  kubectl rollout undo
+  353  kubectl rollout undo -h
+  354  clear
+  355  kubectl rollout status deploy/my-dep -n=rajesh
+  356  clear
+  357  kubectl rollout undo deploy/my-dep --to-revision=1 -n=rajesh
+  358  kubectl rollout status deploy/my-dep -n=rajesh
+  359  clear
+  360  kubectl rollout history deploy/my-dep -n=rajesh
+  361  kubectl get pods -o wide -n=rajesh
+  362  clear
+  363  curl http
+  364  curl http://10.44.0.3
+
+
+Asssignment
+======================================
+Deamonsets
+Statefullsets
+
+
+
 
 
